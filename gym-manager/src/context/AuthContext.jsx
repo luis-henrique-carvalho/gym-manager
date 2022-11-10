@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext, createContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./Util";
 
@@ -8,13 +9,14 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const user = getUserLocalStorage();
 
     if (user) {
       setUser(user);
-      // api.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+      api.defaults.headers.common["Authorization"] = "Bearer " + user.token;
     }
   }, []);
 
@@ -22,7 +24,7 @@ export function AuthProvider({ children }) {
     console.log("cheguei aqui");
     const response = await LoginRequest(usuario);
     console.log(response);
-    // api.defaults.headers.common["Authorization"] = "Bearer " + response.token;
+    api.defaults.headers.common["Authorization"] = "Bearer " + response.token;
 
     const payload = { token: response.token, id: response.user.id };
 
@@ -33,8 +35,11 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
+    
+    console.log("saindo");
     setUser(null);
     setUserLocalStorage(null);
+    Navigate('/login')
   }
 
   return (

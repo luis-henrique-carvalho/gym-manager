@@ -22,7 +22,7 @@ const Alunos = () => {
   useEffect(() => {
     if (user) {
       api
-        .get("/users/21")
+        .get(`/users/${user.id}`)
         .then((res) => {
           setAlunos(res.data.Users);
         })

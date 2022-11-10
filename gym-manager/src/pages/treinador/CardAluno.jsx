@@ -1,14 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Voltar from '../../assets/voltar.png'
+import Voltar from "../../assets/voltar.png";
+import { useAuth } from "../../context/useAuth";
+import { api } from "../../services/api";
 
 const CardAluno = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [rep, setRep] = useState(0)
-  const [peso, setPeso] = useState(0)
+  const [rep, setRep] = useState(0);
+  const [peso, setPeso] = useState(0);
+
+  const { user } = useAuth();
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,23 +22,24 @@ const CardAluno = () => {
     console.log(email);
   };
 
+  
+
   return (
     <div className=" flex flex-col items-center justify-evenly background background2 min-h-screen align-middle bg-gray-700 ">
       <div className=" cont">
+        <div>
+          <Link to={"/usuario/alunos"}>
+            <img
+              src={Voltar}
+              alt="voltar"
+              className="w-16 absolute top-20 left-10"
+            />
+          </Link>
+          <h2 className=" font-extrabold text-center text-2xl mb-2  text-green-400">
+            ADICIONAR ALUNO
+          </h2>
+        </div>
 
-      <div>
-        <Link to={"/usuario/alunos"}>
-          <img
-            src={Voltar}
-            alt="voltar"
-            className="w-16 absolute top-20 left-10"
-          />
-        </Link>
-        <h2 className=" font-extrabold text-center text-2xl mb-2  text-green-400">
-          ADICIONAR ALUNO
-        </h2>
-      </div>
-       
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <label>
             <span className="span">Nome do Aluno</span>
@@ -82,10 +89,9 @@ const CardAluno = () => {
             />
           </label>
 
-          
-
-          <button type="submit" className="btn">Criar Exercício</button>
-          
+          <button type="submit" className="btn">
+            Criar Exercício
+          </button>
         </form>
       </div>
     </div>

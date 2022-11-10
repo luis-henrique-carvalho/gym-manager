@@ -5,15 +5,15 @@ export const api = axios.create({
   baseURL: "http://35.199.96.3",
 });
 
-api.interceptors.request.use(
-  (config) => {
-    const user = getUserLocalStorage();
+// api.interceptors.request.use(
+//   (config) => {
+//     const user = getUserLocalStorage();
 
-    config.headers.Authorization = "Bearer: " + user.token;
+//     config.headers.Authorization = "Bearer: " + user.token;
 
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );

@@ -61,7 +61,7 @@ const SeusExercicios = () => {
           </Link>
         </div>
 
-        <div className=" grid grid-cols-1 gap-8 mb-10 text-xl font-extrabold ">
+        <div className=" grid grid-cols-1 gap-8 mb-10 text-xl font-extrabold tex">
           {exercicio.map(({ id, name, exercicio }) => {
             return (
               <div className="card px-5 flex gap-5 ite p-1 " key={id}>
@@ -81,7 +81,7 @@ const SeusExercicios = () => {
               </div>
             );
           })}
-          <Link to={"/usuario/criar"} className=" btn__sec">
+          <Link to={"/usuario/criar"} className=" btn__sec w-full">
             VOLTAR
           </Link>
         </div>
