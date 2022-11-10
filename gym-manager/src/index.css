@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  .btn {
+    @apply px-4 py-2 bg-green-500 border-b-4 border-green-800 hover:bg-green-300 hover:text-green-700 hover:text-white text-white shadow-md rounded;
+  }
+
+  .btn__sec {
+    @apply text-center text-green-500 font-bold bg-white shadow-lg px-3 py-1;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 placeholder:text-left  text-green-600 bg-transparent rounded-md border-b-4 border-green-800;
+  }
+
+  .input__sec {
+    @apply w-full px-4 py-2 placeholder:text-left  text-green-600 bg-white rounded-md border-b-4 border-green-800;
+  }
+
+  .label {
+    @apply text-green-700 font-bold;
+  }
+
+  .link_list {
+    @apply mr-2;
+  }
+
+  .cont {
+    @apply flex h-full w-11/12 py-4 px-2 flex-col justify-center bg-white items-center rounded-xl shadow-2xl;
+  }
+
+  .card {
+    @apply w-80 h-20 bg-green-500 items-center text-center justify-between ;
+  }
+
+  .background {
+    opacity: 0.9;
+    background-image: url(./assets/foto_1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-position-x: -600px;
+    background-blend-mode: soft-light;
+  }
+  .background2 {
+    background-blend-mode: multiply;
+  }
+
+  .span {
+    @apply text-green-700;
+  }
+
+  .radios {
+    border-radius: 80px 80px 0px 0px;
+  }
+}
