@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState();
-  // const navigate = useNavigate();
+  
 
   useEffect(() => {
     const user = getUserLocalStorage();
@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
     console.log("saindo");
     setUser(null);
     setUserLocalStorage(null);
-    Navigate('/login')
+    
   }
 
   return (
