@@ -1,17 +1,19 @@
 import React from "react";
-import { useAuth } from "../context/useAuth";
+
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { getUserLocalStorage } from "../context/Util";
 
 export const ProtectedLayout = ({ children }) => {
-  const auth = useAuth();
+  const user = getUserLocalStorage()
+  const navigate = useNavigate();
 
-  console.log(auth.usuario);
+  console.log("aqui");
+  console.log(user);
 
-  if (!auth.usuario) {
-    return <h1>vc não tem acess</h1>;
-  }
+  useEffect(() => {
+    if (!user) navigate("/login");
+  }, [navigate, user]);
 
-  return children;
+  return user ? children : <h1> Voce não tem acesso</h1>;
 };
-
-
-

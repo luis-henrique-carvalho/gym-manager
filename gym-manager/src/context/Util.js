@@ -1,5 +1,6 @@
 import { api } from "../services/api";
 
+
 export function setUserLocalStorage(user) {
   localStorage.setItem("u", JSON.stringify(user));
 }
@@ -11,6 +12,8 @@ export function getUserLocalStorage() {
   }
 
   const user = JSON.parse(json);
+
+  console.log(user)
 
   return user ?? null;
 }

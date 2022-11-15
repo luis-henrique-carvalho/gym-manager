@@ -18,6 +18,7 @@ const TreinoDetails = () => {
   const [dataTreino, setDataTreino] = useState([]);
   const [select, setSelect] = useState();
   const [selectName, setSelectName] = useState();
+  const [exercicioId, setExercicioId] = useState();
 
   useEffect(() => {
     api
@@ -51,14 +52,27 @@ const TreinoDetails = () => {
     api
       .post("/exercicio", data)
       .then((res) => {
-        console.log(res.data)
-        setSuccess(!success);
+        console.log(res.data);
+        setExercicioId(res.data.id);
       })
       .catch((err) => console.log(err.message));
+
+    const series = {
+      exercicio_id: exercicioId,
+      repeticao: rep,
+      carga,
+    };
+
+    api
+      .post("/settreino/", series)
+      .then((res) => {
+        console.log(res.data);
+        setSuccess(!success);
+      })
+      .catch();
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = (e) => {
     api
       .delete(`/settreino/${id}`)
       .then(() => setSuccess(!success))
@@ -92,19 +106,47 @@ const TreinoDetails = () => {
                   {active && (
                     <form
                       onSubmit={handleSubmit}
-                      className="flex flex-col btn__sec"
+                      className="flex flex-col btn__sec rounded-md"
                     >
-                      {dataExer &&
-                        dataExer.map((exer) => (
-                          <button
-                            className=" shadow-md px-2 py-1"
-                            type="submit"
-                            onClick={() => setSelectName(exer.name)}
-                            key={exer.id}
-                          >
-                            {exer.name}
-                          </button>
-                        ))}
+                      <label>
+                        <span className="span">Nome do Exercicio</span>
+                        <input
+                          type="text"
+                          name="name"
+                          className=" input"
+                          placeholder="Digite o nome do exercicio"
+                          value={name}
+                          onChange={(e) => setSelectName(e.target.value)}
+                        />
+                      </label>
+
+                      <label className="label">
+                        <span className="span">Repetições</span>
+                        <input
+                          type="number"
+                          name="rep"
+                          className=" input__sec"
+                          placeholder="Digite as Repetições"
+                          value={rep}
+                          onChange={(e) => setRep(e.target.value)}
+                        />
+                      </label>
+
+                      <label className="label">
+                        <span className="span">Carga</span>
+                        <input
+                          type="number"
+                          name="rep"
+                          className=" input__sec"
+                          placeholder="Digite a Carga"
+                          value={carga}
+                          onChange={(e) => setCarga(e.target.value)}
+                        />
+                      </label>
+
+                      <button type="submit" className="btn mt-1">
+                        Criar Exercicio
+                      </button>
                     </form>
                   )}
 

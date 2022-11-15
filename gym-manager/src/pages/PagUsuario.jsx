@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const PagUsuário = () => {
-  const user = useAuth();
+  const {user} = useAuth();
   const [type, setType] = useState(true);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const PagUsuário = () => {
         .catch((err) => {
           console.log(err.message);
         });
-  }, [type]);
+  }, [type, user]);
 
   console.log(type);
 

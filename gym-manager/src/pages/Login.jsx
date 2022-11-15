@@ -18,6 +18,7 @@ const Login = () => {
   const auth = useAuth();
 
   async function handleSubmit(e) {
+    console.log(e.data)
     const user = {
       email,
       password,

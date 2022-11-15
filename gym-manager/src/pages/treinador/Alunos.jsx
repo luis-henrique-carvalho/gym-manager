@@ -11,7 +11,7 @@ import { api } from "../../services/api";
 import CardAluno from "./CardAluno";
 
 const Alunos = () => {
-  const user = useAuth();
+  const {user} = useAuth();
 
   const [alunos, setAlunos] = useState([]);
   const [detalhes, setDetales] = useState(false);

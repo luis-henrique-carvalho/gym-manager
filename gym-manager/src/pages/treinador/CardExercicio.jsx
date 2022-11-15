@@ -14,7 +14,7 @@ const CardExercicio = () => {
 
   const navigate = useNavigate();
 
-  const user = useAuth();
+  const {user} = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();

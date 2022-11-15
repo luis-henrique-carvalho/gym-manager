@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState();
   
 
+
   useEffect(() => {
     const user = getUserLocalStorage();
 
@@ -40,10 +41,11 @@ export function AuthProvider({ children }) {
     setUser(null);
     setUserLocalStorage(null);
     
+    
   }
 
   return (
-    <AuthContext.Provider value={{ ...user, authentication, logout }}>
+    <AuthContext.Provider value={{ user, authentication, logout }}>
       {children}
     </AuthContext.Provider>
   );

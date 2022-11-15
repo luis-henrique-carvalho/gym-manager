@@ -5,10 +5,13 @@ import Adicionar from "../../assets/adicionar.png";
 import Lupa from "../../assets/lupa.png";
 import { api } from "../../services/api";
 import Delete from "../../assets/delete.png";
+import { useAuth } from "../../context/useAuth";
 
 const SeusExercicios = () => {
   const [exercicio, setExercicio] = useState([]);
   const [success,setSuccess] = useState(false)
+
+  const {user} = useAuth()
   useEffect(() => {
     api
       .get("/exercicio/")
@@ -19,7 +22,7 @@ const SeusExercicios = () => {
       .catch((err) => {
         console.log(err.messsage);
       });
-  }, [success]);
+  }, [success, user]);
   console.log(exercicio);
 
   

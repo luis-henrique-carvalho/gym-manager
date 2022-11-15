@@ -3,8 +3,7 @@ import { useAuth } from "../context/useAuth";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  // const { user } = useAuth();
-
+  console.log(user)
   
 
   return (
@@ -13,19 +12,24 @@ const Navbar = () => {
         Home
       </NavLink>
       <ul className=" flex">
-        <li className="link_list">
-          <NavLink to={"/login"}>Login</NavLink>
-        </li>
-
-        <li className="link_list">
-          <NavLink onClick={console.log(user)} to={"/Cadastro"}>Cadastro</NavLink>
-        </li>
-
-        <li className="link_list">
-          <NavLink to={"/Cadastro"}></NavLink>
-        </li>
-
         {!user && (
+          <>
+            <li className="link_list">
+              <NavLink to={"/login"}>Login</NavLink>
+            </li>
+
+            <li className="link_list">
+              <NavLink onClick={console.log(user)} to={"/Cadastro"}>
+                Cadastro
+              </NavLink>
+            </li>
+
+            <li className="link_list">
+              <NavLink to={"/Cadastro"}></NavLink>
+            </li>
+          </>
+        )}
+        {user && (
           <li>
             <button onClick={logout}>Sair</button>
           </li>
