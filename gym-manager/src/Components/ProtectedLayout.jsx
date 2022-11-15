@@ -8,9 +8,6 @@ export const ProtectedLayout = ({ children }) => {
   const user = getUserLocalStorage()
   const navigate = useNavigate();
 
-  console.log("aqui");
-  console.log(user);
-
   useEffect(() => {
     if (!user) navigate("/login");
   }, [navigate, user]);

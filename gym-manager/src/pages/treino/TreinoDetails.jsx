@@ -20,25 +20,6 @@ const TreinoDetails = () => {
   const [selectName, setSelectName] = useState();
   const [exercicioId, setExercicioId] = useState();
 
-  useEffect(() => {
-    api
-      .get(`treino/${id}`)
-      .then((res) => {
-        setDataTreino(res.data);
-      })
-      .catch((err) => console.log(err.message));
-
-    api
-      .get("/exercicio/")
-      .then((res) => {
-        setDataExer(res.data);
-      })
-      .catch((err) => console.log(err.message));
-  }, [success, active]);
-
-  console.log(dataExer);
-  console.log(dataTreino);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -52,16 +33,16 @@ const TreinoDetails = () => {
     api
       .post("/exercicio", data)
       .then((res) => {
-        console.log(res.data);
         setExercicioId(res.data.id);
       })
       .catch((err) => console.log(err.message));
 
     const series = {
-      exercicio_id: exercicioId,
+      exercicio_id: exercicioId ,
       repeticao: rep,
-      carga,
+      carga: carga,
     };
+    console.log(series);
 
     api
       .post("/settreino/", series)
@@ -69,7 +50,7 @@ const TreinoDetails = () => {
         console.log(res.data);
         setSuccess(!success);
       })
-      .catch();
+      .catch((err) => console.log(err.message));
   };
 
   const handleDelete = (e) => {
@@ -78,6 +59,28 @@ const TreinoDetails = () => {
       .then(() => setSuccess(!success))
       .catch();
   };
+
+  useEffect(() => {
+    api
+      .get(`treino/${id}`)
+      .then((res) => {
+        setDataTreino(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err.message));
+
+    api
+      .get("/exercicio/")
+      .then((res) => {
+        setDataExer(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err.message));
+  }, [success, active]);
+
+  
+
+  console.log(dataTreino);
   return (
     <div className="flex flex-col items-center justify-evenly background background2 min-h-screen align-middle bg-gray-700 ">
       <div className=" cont mt-5">
@@ -97,11 +100,31 @@ const TreinoDetails = () => {
                   <p className=" text-green-200">Exercicios Adicionados</p>
                   {dataTreino.Exercicios &&
                     dataTreino.Exercicios.map((ex) => (
-                      <ul key={ex.id}>
-                        <li>
-                          <p> - {ex.name}</p>
-                        </li>
-                      </ul>
+                      <div key={ex.id}>
+                        <div className=" p-1 bg-white">
+                          <p className=" text-green-800 text-2xl text-center">
+                            {ex.name}
+                          </p>
+                          {dataExer.map((exer) => (
+                            <div
+                              key={exer.id}
+                              className=" text-green-600 flex flex-row justify-between"
+                            >
+                              {exer.Settreinos &&
+                                exer.Settreinos  &&
+                                ex.id === exer.id &&
+                                exer.Settreinos.map((set) => (
+                                  <div className="flex flex-col">
+                                    <>
+                                      <p>Repetições: {set.repeticao}</p>
+                                      <p>Carga: {set.carga}</p>
+                                    </>
+                                  </div>
+                                ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   {active && (
                     <form
