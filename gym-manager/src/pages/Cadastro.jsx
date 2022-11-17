@@ -121,7 +121,7 @@ const Cadastro = () => {
             Cadastro
           </button>
           <p className=" text-center text-green-400 ">ou faça seu login</p>
-          <Link className="btn__sec">Clique aqui</Link>
+          <Link to={'/login'} className="btn__sec">Clique aqui</Link>
         </form>
       </div>
     </div>

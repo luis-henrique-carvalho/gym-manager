@@ -10,7 +10,6 @@ import { useAuth } from "../context/useAuth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const auth = useAuth();
