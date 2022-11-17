@@ -19,6 +19,7 @@ import TreinoDetails from "./pages/treino/TreinoDetails";
 import ExerciciosDetails from "./pages/treinador/ExerciciosDetails";
 import { useAuth } from "./context/useAuth";
 import TreinoUser from "./pages/usuario/TreinoUser";
+
 import { useState } from "react";
 
 function App() {
@@ -121,6 +122,7 @@ function App() {
                 </ProtectedLayout>
               }
             />
+            
             <Route
               path="/exercicios/details/:id"
               element={

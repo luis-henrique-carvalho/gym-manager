@@ -2,16 +2,56 @@ import React from "react";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Img from "../assets/foto_1.jpg";
+import { api } from "../services/api";
+
 const Cadastro = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  
-
+  const [type, setType] = useState("Aluno");
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     console.log(email);
+    console.log(type);
+
+    if (type === "Treinador") {
+      const user = {
+        name: name,
+        password: password,
+        email: email,
+        type: type,
+      };
+
+      api
+        .post("/users/", user)
+        .then((resp) => {
+          console.log(resp.data);
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      const user = {
+        name: name,
+        password: password,
+        email: email,
+        type: type,
+        users_id: "4",
+      };
+
+      api
+        .post("/users/", user)
+        .then((resp) => {
+          console.log(resp.data);
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   };
 
   return (
@@ -66,13 +106,20 @@ const Cadastro = () => {
           </label>
           <label className=" label">
             <span>Tipo de usuário</span>
-            <select name="type" id="" className=" bg-green-500 input">
+            <select
+              name="type"
+              id=""
+              onChange={(e) => setType(e.target.value)}
+              className=" bg-green-500 input"
+            >
               <option value="Aluno">Aluno</option>
               <option value="Instrutor">Instrutor</option>
             </select>
           </label>
 
-          <button className="btn">Cadastro</button>
+          <button className="btn" type="submit">
+            Cadastro
+          </button>
           <p className=" text-center text-green-400 ">ou faça seu login</p>
           <Link className="btn__sec">Clique aqui</Link>
         </form>

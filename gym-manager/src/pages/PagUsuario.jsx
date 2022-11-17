@@ -18,7 +18,7 @@ const PagUsuário = () => {
         .get(`users/${user.id}`)
         .then((res) => {
           const tipo = res.data.type;
-          if (tipo === "Atleta") {
+          if (tipo === "Aluno") {
             setType(false);
           }
         })
@@ -71,7 +71,7 @@ const PagUsuário = () => {
           <>
             <div className=" h-1/5 flex items-center justify-center align-middl">
               <h1 className=" font-extrabold text-center text-4xl mb-2 text-green-400 ">
-                PAGINA <br /> DO ATLETA
+                PAGINA <br /> DO Aluno
               </h1>
             </div>
 

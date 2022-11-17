@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+
+body::-webkit-scrollbar { 
+	display: none;
+}
+
+div::-webkit-scrollbar{
+  display: none;
+}
+
 @layer utilities {
   .btn {
     @apply px-4 py-2 bg-green-500 border-b-4 border-green-800 hover:bg-green-300 hover:text-green-700 hover:text-white text-white shadow-md rounded;
@@ -35,6 +44,8 @@
   .card {
     @apply w-80 h-20 bg-green-500 items-center text-center justify-between ;
   }
+
+  
 
   .background {
     opacity: 0.9;

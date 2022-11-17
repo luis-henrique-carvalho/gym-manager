@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext, createContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useHistory  } from "react-router-dom";
 import { api } from "../services/api";
 import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./Util";
 
 export const AuthContext = createContext();
 
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState();
+  const [sair, setSair] = useState(false)
   
 
 
@@ -19,7 +21,7 @@ export function AuthProvider({ children }) {
       setUser(user);
       api.defaults.headers.common["Authorization"] = "Bearer " + user.token;
     }
-  }, []);
+  }, [sair]);
 
   async function authentication(usuario) {
     console.log("cheguei aqui");
@@ -37,10 +39,10 @@ export function AuthProvider({ children }) {
 
   function logout() {
     
+    setSair(!true)
     console.log("saindo");
     setUser(null);
     setUserLocalStorage(null);
-    
     
   }
 
