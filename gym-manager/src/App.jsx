@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
@@ -17,10 +17,9 @@ import { ProtectedLayout } from "./Components/ProtectedLayout";
 import AlunoDetails from "./pages/usuario/AlunoDetails";
 import TreinoDetails from "./pages/treino/TreinoDetails";
 import ExerciciosDetails from "./pages/treinador/ExerciciosDetails";
-import { useAuth } from "./context/useAuth";
 import TreinoUser from "./pages/usuario/TreinoUser";
 
-import { useState } from "react";
+
 
 function App() {
   return (

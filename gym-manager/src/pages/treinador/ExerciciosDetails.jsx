@@ -7,9 +7,7 @@ import Delete from "../../assets/delete.png";
 const ExerciciosDetails = () => {
   const { id } = useParams();
   const [exercicio, setExercicio] = useState([]);
-  const [name, setName] = useState();
-  const [eid, setEid] = useState();
-  const [details, setDetails] = useState();
+
   const [active, setActive] = useState(false);
   const [carga, setCarga] = useState();
   const [rep, setRep] = useState();
@@ -20,8 +18,10 @@ const ExerciciosDetails = () => {
       .get("/exercicio/")
       .then((res) => {
         const dados = res.data;
+        console.log(dados)
+        console.log(id)
 
-        const exer = dados.filter((dado) => dado.id == id);
+        const exer = dados.filter((dado) => dado.id === parseInt(id));
         setExercicio(exer);
       })
       .catch((err) => {
@@ -55,6 +55,8 @@ const ExerciciosDetails = () => {
       .then(() => setSuccess(!success))
       .catch();
   };
+
+  console.log(exercicio.Settreinos)
 
   return (
     <div className="flex flex-col items-center justify-evenly background background2 min-h-screen align-middle bg-gray-700 ">
@@ -120,9 +122,7 @@ const ExerciciosDetails = () => {
                       </form>
                     ) : (
                       <>
-                        {exercicio.Settreinos.map((series) => {
-                          <p>series</p>;
-                        })}
+                       
                       </>
                     )}
                     <button

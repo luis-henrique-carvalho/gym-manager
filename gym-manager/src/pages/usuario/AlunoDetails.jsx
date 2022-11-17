@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const AlunoDetails = () => {
   const { id } = useParams();
-  const [aluno, setAluno] = useState();
+ 
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [type, setType] = useState();

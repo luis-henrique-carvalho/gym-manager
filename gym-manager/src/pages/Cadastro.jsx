@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import Img from "../assets/foto_1.jpg";
+import { Link, useNavigate } from "react-router-dom";
+
 import { api } from "../services/api";
 
 const Cadastro = () => {

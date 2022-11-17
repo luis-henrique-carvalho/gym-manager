@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import Adicionar from "../../assets/adicionar.png";
 import Lupa from "../../assets/lupa.png";
 import { useState } from "react";
 
@@ -14,10 +13,8 @@ const Alunos = () => {
   const {user} = useAuth();
 
   const [alunos, setAlunos] = useState([]);
-  const [detalhes, setDetales] = useState(false);
-  const [id, setId] = useState();
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [detalhes] = useState(false);
+
 
   useEffect(() => {
     if (user) {

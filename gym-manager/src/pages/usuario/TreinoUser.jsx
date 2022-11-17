@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
-import Delete from "../../assets/delete.png";
+
 
 const TreinoUser = () => {
   const [treinos, setTreinos] = useState([]);

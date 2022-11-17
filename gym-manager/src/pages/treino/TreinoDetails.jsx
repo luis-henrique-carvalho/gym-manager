@@ -34,7 +34,7 @@ const TreinoDetails = () => {
         console.log(res.data);
       })
       .catch((err) => console.log(err.message));
-  }, [success, active]);
+  },[success, active,id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,18 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
-import Img from "../assets/foto_1.jpg";
-import axios from "axios";
+import {  useNavigate, NavLink } from "react-router-dom";
 
-import { LoginRequest } from "../context/Util";
 
-import { Profiler } from "react";
+
+
 import { useAuth } from "../context/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+
   const navigate = useNavigate();
 
   const auth = useAuth();

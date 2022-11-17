@@ -1,16 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Voltar from "../../assets/voltar.png";
 import { useAuth } from "../../context/useAuth";
 import { api } from "../../services/api";
 
 const CardExercicio = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+ 
   const [name, setName] = useState("");
-  const [rep, setRep] = useState("");
-  const [peso, setPeso] = useState("");
+  
 
   const navigate = useNavigate();
 

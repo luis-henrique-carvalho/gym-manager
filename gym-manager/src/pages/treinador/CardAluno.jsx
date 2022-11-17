@@ -1,25 +1,25 @@
 import React from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Voltar from "../../assets/voltar.png";
-import { useAuth } from "../../context/useAuth";
-import { api } from "../../services/api";
+// import { useAuth } from "../../context/useAuth";
+// import { api } from "../../services/api";
 
 const CardAluno = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [rep, setRep] = useState(0);
   const [peso, setPeso] = useState(0);
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(email);
+    // console.log(email);
   };
 
   

@@ -5,7 +5,7 @@ import { useAuth } from "../context/useAuth";
 import { api } from "../services/api";
 
 const Navbar = () => {
-  const [usuario, setUsuario] = useState();
+ 
   const { user, logout } = useAuth();
   const [tipo, setTipo] = useState();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Navbar = () => {
     }
   }, [tipo, user]);
 
-  console.log(usuario);
+ 
 
   const sair = () => {
     logout();
@@ -58,7 +58,7 @@ const Navbar = () => {
         )}
         {user && (
           <>
-            {tipo == "Treinador" ? (
+            {tipo === "Treinador" ? (
               <>
                 <li>
                   <NavLink to={"/exercicio"}>Treinos</NavLink>
