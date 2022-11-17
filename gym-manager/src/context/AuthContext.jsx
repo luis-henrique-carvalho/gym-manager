@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useContext, createContext } from "react";
-import { Navigate, useNavigate, useHistory  } from "react-router-dom";
+import { createContext } from "react";
+
 import { api } from "../services/api";
 import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./Util";
 
 export const AuthContext = createContext();
 
-
 export function AuthProvider({ children }) {
   const [user, setUser] = useState();
-  const [sair, setSair] = useState(false)
-  
-
+  const [sair, setSair] = useState(false);
 
   useEffect(() => {
     const user = getUserLocalStorage();
@@ -38,12 +35,10 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    
-    setSair(!true)
+    setSair(!true);
     console.log("saindo");
     setUser(null);
     setUserLocalStorage(null);
-    
   }
 
   return (
